@@ -160,6 +160,7 @@ class PodsInit {
 		add_action( 'plugins_loaded', [ $this, 'activate_install' ], 9 );
 		add_action( 'after_setup_theme', [ $this, 'after_setup_theme' ] );
 		add_action( 'wp_loaded', [ $this, 'flush_rewrite_rules' ] );
+		add_filter( 'plugin_action_links_' . plugin_basename( PODS_FILE ), [ $this, 'settings_link' ] );
 	}
 
 	/**
@@ -1906,6 +1907,21 @@ class PodsInit {
 			pods_transient_clear( 'pods_flush_rewrites' );
 		}
 	}
+
+	/**
+	 * Add Pods settings link
+	 * 
+	 * @param array $links
+	 * 
+	 * @return array
+	 * @since 3.3.8
+	 * @author monzuralam
+	 **/
+	public function settings_link( $links ) {
+        $links['pods_settings'] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=pods-settings' ), esc_html__( 'Settings', 'pods' ) );
+
+        return $links;
+    }
 
 	/**
 	 * Update Post Type messages
