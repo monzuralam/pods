@@ -1910,11 +1910,12 @@ class PodsInit {
 
 	/**
 	 * Add custom action links for Pods.
-	 * 
-	 * @param string[] $actions An array of plugin action links.
-	 * 
-	 * @return string[] An array of plugin action links.
+	 *
 	 * @since TBD
+	 *
+	 * @param string[] $actions An array of plugin action links.
+	 *
+	 * @return string[] An array of plugin action links.
 	 **/
 	public function settings_link( array $links ): array {
 		// Check if the Pods admin menu is disabled.
